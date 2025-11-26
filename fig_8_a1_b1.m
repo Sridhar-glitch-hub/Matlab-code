@@ -23,9 +23,9 @@ for i=1:1:length(phi)
   t.^2).*cos((1/2).*phi(i))+2.*t.^4.*cos(phi(i)));
     T(j)=num(j)./deno(j);
 
-    F(j)=-T_a.*T(j).*(w(j)-mu).*Df(j);
-    F1(j)=-T_a.*T(j).*Df(j);
-    F2(j)=-T_a.*T(j).*(w(j)-mu).^2.*Df(j);
+    F(j)=-T(j).*(w(j)-mu).*Df(j);
+    F1(j)=-T(j).*Df(j);
+    F2(j)=-T(j).*(w(j)-mu).^2.*Df(j);
     end
      % Transport coefficients
     L_11 = trapz(w, F1);
