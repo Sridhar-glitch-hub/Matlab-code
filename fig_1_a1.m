@@ -22,9 +22,9 @@ for j=1:1:length(E)
     d(j)=T_a.*(exp((E(j)-mu)/T_a)+1).^2;
     Df(j)=-n(j)/d(j);   % derivative of Fermi distribution
 
-    F(j,i)=-T_a.*T_n(j,i).*(E(j)-mu).*Df(j);
-    F1(j,i)=-T_a.*T_n(j,i).*Df(j);
-    F2(j,i)=-T_a.*T_n(j,i).*(E(j)-mu).^2.*Df(j);
+    F(j,i)=-T_n(j,i).*(E(j)-mu).*Df(j);
+    F1(j,i)=-T_n(j,i).*Df(j);
+    F2(j,i)=-T_n(j,i).*(E(j)-mu).^2.*Df(j);
 end
 L_11(i)=trapz(E,F1(:,i));
 L_12(i)=trapz(E,F(:,i));
