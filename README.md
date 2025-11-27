@@ -2,6 +2,8 @@ This repository contains the MATLAB codes and supporting data used in the manusc
 
 **"Coherent control of thermoelectric performance via engineered transmission functions  
 in multi-dot Aharonov–Bohm heat engine"**  
+, arXiv:2509.03606 [cond-mat],  
+  https://doi.org/10.48550/arXiv.2509.03606
 by **Sridhar et.al. (2025)**.
 
 The repository includes all scripts required to reproduce the numerical results and figures presented in the manuscript. The simulations explore the coherent and  thermoelectric transport properties of a **4QD(2,2), 4QD(3,1), 5QD(3,2), and 6QD(3,3) Aharonov–Bohm heat engine**, including the effects of voltage–probe–induced inelastic scattering.
