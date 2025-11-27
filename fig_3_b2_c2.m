@@ -5,7 +5,7 @@ gamma   = 0.05;
 epsilon = linspace(-2, 2, 1000);
 t_values       = [0.01,0.05,0.1];
 phi     = pi;
-w       = linspace(-2, 2, 100000);  % 10^5 points for faster convergence
+w       = linspace(-2, 2, 10000);  % 10^5 points for faster convergence
 mu      = 0.01;
 delta   = 0.5;
 T_a=0.0334;
@@ -86,9 +86,9 @@ for tidx = 1:nt
             Tj = real(trace(Gs * Gr * Gd * Ga));
             Tvec(j) = Tj;
 
-            F(j)  = -T_a * Tj * (E - mu) * Df;
-            F1(j) = -T_a * Tj * Df;
-            F2(j) = -T_a * Tj * (E - mu)^2 * Df;
+            F(j)  = - Tj * (E - mu) * Df;
+            F1(j) = - Tj * Df;
+            F2(j) = - Tj * (E - mu)^2 * Df;
         end
 
         % Transport coefficients
@@ -118,33 +118,12 @@ figure; hold on;
 for tidx = 1:nt
     plot(epsilon, ZT_all(tidx, :), 'LineWidth', 2, 'DisplayName', ['t = ' num2str(t_values(tidx))])
 end
-xlabel('\epsilon'); ylabel('ZT'); legend show; title('ZT vs \epsilon');
+xlabel('\epsilon'); ylabel('ZT'); legend('$t/\gamma=0.2$','$t/\gamma=1$','$t/\gamma=2$','interpreter','latex') ; title('ZT vs \epsilon');
 
-%figure; hold on;
-%for tidx = 1:nt
-%    plot(epsilon, G_all(tidx, :), 'LineWidth', 2, 'DisplayName', ['t = ' num2str(t_values(tidx))])
-%end
-%xlabel('\epsilon'); ylabel('G'); legend show; title('G vs \epsilon');
 
-%figure; hold on;
-%for tidx = 1:nt
-%    plot(epsilon, S_all(tidx, :), 'LineWidth', 2, 'DisplayName', ['t = ' num2str(t_values(tidx))])
-%end
-%xlabel('\epsilon'); ylabel('S'); legend show; title('Seebeck Coefficient vs \epsilon');
-
-%figure; hold on;
-%for tidx = 1:nt
-%    plot(epsilon, K_all(tidx, :), 'LineWidth', 2, 'DisplayName', ['t = ' num2str(t_values(tidx))])
-%end
-%xlabel('\epsilon'); ylabel('\kappa'); legend show; title('Thermal Conductance vs \epsilon');
 
 figure; hold on;
 for tidx = 1:nt
     plot(epsilon, L_all(tidx, :) / L0, 'LineWidth', 2, 'DisplayName', ['t = ' num2str(t_values(tidx))])
 end
-xlabel('\epsilon'); ylabel('L / L_0'); legend show; title('Lorenz Ratio vs \epsilon');
-%figure; hold on;
-%for tidx = 1:nt
-%    plot(epsilon, S_all(tidx, :).^2./(L_all(tidx, :)), 'LineWidth', 2, 'DisplayName', ['t = ' num2str(t_values(tidx))])
-%end
-%xlabel('\epsilon'); ylabel('S^2 / L'); legend show; title('S^2/L vs \epsilon');
+xlabel('\epsilon'); ylabel('L / L_0'); legend('$t/\gamma=0.2$','$t/\gamma=1$','$t/\gamma=2$','interpreter','latex') ; title('Lorenz Ratio vs \epsilon');
